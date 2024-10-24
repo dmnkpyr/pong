@@ -1,7 +1,7 @@
 var xBall = Math.floor(Math.random() * 300) + 50;
 var yBall = Math.floor(Math.random() * 300) + 50;
-var xSpeed = (2, 7);
-var ySpeed = (-7, -2);
+var xSpeed = (4, 8);
+var ySpeed = (-8, -4);
 var score = 0
 
 function setup() {
@@ -46,9 +46,6 @@ function draw() {
       fill(0)
       rect(0,0,width,height)
       fill(255)
-      textSize(height*0.8);
-      textAlign(CENTER, CENTER);
-      textStyle(BOLD);
       text(score, width/2, height/2+height*0.05);
       textSize(10);
       text("Game over", width/2, height-35)
