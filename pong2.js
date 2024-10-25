@@ -1,7 +1,7 @@
 var xBall = Math.floor(Math.random() * 300) + 50;
 var yBall = Math.floor(Math.random() * 300) + 50;
-var xSpeed = (4, 8);
-var ySpeed = (-8, -4);
+var xSpeed = (6, 10);
+var ySpeed = (-10, -6);
 var score = 0
 
 function setup() {
