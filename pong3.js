@@ -7,8 +7,9 @@ var maxSpeed = 16
 var xSpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
 var ySpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
 var startCounter = 0
-var myColor = {
-  h: Math.random(1000),
+var initialHue = Math.random(1000)
+var color1 = {
+  h: initialHue,
   s: 500,
   b: 1000
 }
@@ -21,14 +22,14 @@ function setup() {
 }
 
 function draw() {
-  background(myColor.h,500, 1000, bgOpacity);
+  background((color1.h)%1000,500, 1000, bgOpacity);
   noStroke()
 
-  fill(myColor.h, myColor.s, myColor.b);
+  fill(color1.h, color1.s, color1.b);
   xBall += xSpeed;
   yBall += ySpeed;
-  myColor.h = (myColor.h+1)%1000
-  myColor.s += 1
+  color1.h = (color1.h+1)%1000
+  color1.s += 1
   startCounter += 1
   ellipse(xBall, yBall, dBall, dBall);
 
@@ -50,14 +51,15 @@ function draw() {
   if(yBall>windowHeight-dBall/2){
     if(xBall > mouseX-45 && xBall < mouseX+45){
       ySpeed *= -1
-      myColor.h = random(1000)
-      myColor.s = 500
+      color1.h = random((initialHue-100)%1000, (initialHue+100)%1000)
+      color1.s = 500
     }else if(yBall>windowHeight+dBall/2) {
       bgOpacity = 1000
       yBall = -dBall
       startCounter = 0
       xSpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
       ySpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
+      initialHue = Math.random(1000)
     }
   }
   
