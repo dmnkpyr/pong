@@ -1,7 +1,8 @@
 var xBall = Math.floor(Math.random() * 300) + 50;
 var yBall = Math.floor(Math.random() * 300) + 50;
-var xSpeed = (6, 10);
-var ySpeed = (-6, -9);
+var xSpeed = (Math.random()*10)+5
+var ySpeed = (Math.random()*-6)-5
+console.log(xSpeed)
 var bgGray = 200
 var squeezer = 0
 var squeezerGrow = 0
@@ -9,8 +10,10 @@ var score = 0
 var myColor = {r: 115, g: 255, b: 0}
 
 function setup() {
+
   createCanvas(windowWidth, windowHeight);
   noStroke()
+  frameRate(120)
 }
 
 function draw() {
@@ -35,16 +38,18 @@ function draw() {
     ySpeed *= -1
   }
 
-  if(yBall>windowHeight-35){
+  if(yBall>windowHeight-45){
     if(xBall > mouseX-45 && xBall < mouseX+45 && ySpeed>0){
       ySpeed *= -1
-      squeezer += height/50
+      squeezer += height/30
       bgGray -= 5
       score ++
+      ySpeed *=1.05
+      xSpeed *=1.05
     } else if(yBall>windowHeight-20)  {
-      squeezerGrow = 30
+      squeezerGrow = 15
       textAlign(CENTER, CENTER)
-      if (score > 46){
+      if (score > 25){
       textSize(width/2.2);
       text("good", width/2, height/2+height*0.1)}
       else {

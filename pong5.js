@@ -55,7 +55,7 @@ function draw() {
     ySpeed *= -1
   }
 
-  if(yBall>height-dPaddle/2-1.5*dBall){
+  if(yBall>height-dPaddle/2-2*dBall){
     if(xBall > mouseX-dPaddle && xBall < mouseX+dPaddle){
       ySpeed *= -1
       hubbubBallList.push(new hubbub)
@@ -67,7 +67,7 @@ function draw() {
       for (let hubbubBall of hubbubBallList){
         hubbubBall.xSpeed = hubbubBall.xSpeed*0.8
         hubbubBall.ySpeed = hubbubBall.fallSpeed 
-        hubbubBall.fallSpeed = hubbubBall.fallSpeed*1.02
+        hubbubBall.fallSpeed = hubbubBall.fallSpeed*1.025
         hubbubBall.hue = hue2 }
 
       

@@ -2,15 +2,15 @@
 var dBall = 100
 var xBall = Math.floor(Math.random() * 300) + 50;
 var yBall = -dBall
-var minSpeed = 8
-var maxSpeed = 16
-var xSpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
-var ySpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
+var minSpeed = 6
+var maxSpeed = 9
+var xSpeed = Math.random() * (maxSpeed-minSpeed) + minSpeed
+var ySpeed = Math.random() * (maxSpeed-minSpeed) + minSpeed
 var startCounter = 0
-var color1 = {
+var thisColor = {
   h: Math.random(),
-  s: 0.8,
-  b: 0.1
+  s: null,
+  b: null
 }
 var nextHue = Math.random()
 var bgOpacity = 1000
@@ -19,21 +19,22 @@ var bgOpacity = 1000
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 1)
+  frameRate(120)
 }
 
 function draw() {
-  background((color1.h+0.2)%1, 0.2, 0.2, bgOpacity);
+  background((thisColor.h-0.2)%1, 0.2, 0.2, bgOpacity);
   noStroke()
 
-  fill(color1.h, color1.s, color1.b);
+  fill(thisColor.h, thisColor.s, thisColor.b);
   xBall += xSpeed* noise(0.01 * frameCount);
   yBall += ySpeed;
-  color1.b = map(sin(frameCount/100),-1,1,0.2,1)
-  color1.s = map(sin(frameCount/100),-1,1,0.4,1)
+  thisColor.b = map(sin(frameCount/100),-1,1,0.2,1)
+  thisColor.s = map(sin(frameCount/100),-1,1,0.4,1)
   startCounter += 1
   ellipse(xBall, yBall, dBall, dBall);
 
-  fill(0, 0, 0)
+  fill(0, 0, 0,)
   rect(0,height-15,width,15)
   fill(nextHue, 1, 1)
   rect(mouseX-45,windowHeight-15, 90, 15);
@@ -56,8 +57,8 @@ function draw() {
       startCounter = 0
       xSpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
       ySpeed = Math.floor(Math.random() * (maxSpeed-minSpeed)) + minSpeed
-      color1.h = nextHue
-      color1.s = 0.8
+      thisColor.h = nextHue
+      thisColor.s = 0.8
       nextHue = Math.random()
     }
   }
