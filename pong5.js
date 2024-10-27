@@ -1,7 +1,7 @@
 let xBall = Math.floor(Math.random() * 300) + 50;
 let yBall = Math.floor(Math.random() * 300) + 50;
-let xSpeed = (6, 10);
-let ySpeed = (-10, -6);
+let xSpeed = (Math.random() * 4)+10;
+let ySpeed = (Math.random() * -4)-10;;
 
 let dBall = 15
 let dPaddle = dBall*5.7
@@ -67,6 +67,7 @@ function draw() {
       for (let hubbubBall of hubbubBallList){
         hubbubBall.xSpeed = hubbubBall.xSpeed*0.8
         hubbubBall.ySpeed = hubbubBall.fallSpeed 
+        hubbubBall.fallSpeed = hubbubBall.fallSpeed*1.02
         hubbubBall.hue = hue2 }
 
       
